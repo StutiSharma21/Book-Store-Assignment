@@ -8,22 +8,22 @@ import javax.persistence.*;
 public class User {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
-  long user_id;
+  private long user_id;
 
   @Column(name = "first_name")
-  String first_name;
+  private String first_name;
 
   @Column(name = "phone_no")
-  String phone_no;
+  private String phone_no;
 
   @Column(name = "email_id")
-  String email_id;
+  private String email_id;
 
   @Column(name = "wallet")
-  int wallet;
+  private int wallet;
 
   @Column(name = "is_suspended")
-  int is_suspended;
+  private int is_suspended;
 
   public long getUser_id() {
     return user_id;

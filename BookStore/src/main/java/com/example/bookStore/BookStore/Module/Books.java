@@ -11,36 +11,26 @@ public class Books {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    long bookId;
+    private long bookId;
 
     @Column(name = "bookCode")
-    String bookCode;
+    private String bookCode;
 
     @Column(name = "bookName")
-    String bookName;
+    private String bookName;
 
     @Column(name = "bookAuthor")
-    String bookAuthor;
+    private String bookAuthor;
 
     @Column(name = "bookPrice")
-    int bookPrice;
+    private int bookPrice;
 
     @Column(name = "bookCategory")
-    String bookCategory;
+    private String bookCategory;
 
-    @Column(name = "bookCopies")
-    int bookCopies;
+    @Column(name = "isAvailable")
+    private int isAvailable;
 
-    public Date getCreatedTime() {
-        return createdTime;
-    }
-
-    public void setCreatedTime(Date createdTime) {
-        this.createdTime = createdTime;
-    }
-
-    @CreationTimestamp
-    private Date createdTime;
 
     public long getBookId() {
         return bookId;
@@ -90,11 +80,13 @@ public class Books {
         this.bookCategory = bookCategory;
     }
 
-    public int getBookCopies() {
-        return bookCopies;
+
+    public int getIsAvailable() {
+        return isAvailable;
     }
 
-    public void setBookCopies(int bookCopies) {
-        this.bookCopies = bookCopies;
+    public void setIsAvailable(int isAvailable) {
+        this.isAvailable = isAvailable;
     }
+
 }
