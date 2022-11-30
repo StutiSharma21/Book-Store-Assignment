@@ -19,8 +19,8 @@ public class User {
   @Column(name = "email_id")
   private String email_id;
 
-  @Column(name = "wallet")
-  private int wallet;
+//  @Column(name = "wallet")
+//   int wallet;
 
   @Column(name = "is_suspended")
   private int is_suspended;
@@ -57,13 +57,13 @@ public class User {
     this.email_id = email_id;
   }
 
-  public int getWallet() {
-    return wallet;
-  }
-
-  public void setWallet(int wallet) {
-    this.wallet = wallet;
-  }
+//  public int getWallet() {
+//    return wallet;
+//  }
+//
+//  public void setWallet(int wallet) {
+//    this.wallet = wallet;
+//  }
 
   public int getIs_suspended() {
     return is_suspended;

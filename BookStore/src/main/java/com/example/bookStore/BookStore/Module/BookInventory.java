@@ -1,13 +1,18 @@
 package com.example.bookStore.BookStore.Module;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import jdk.jfr.Timestamp;
+import org.hibernate.annotations.CreationTimestamp;
+
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
 @Table(name = "BookInventory")
 public class BookInventory {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int inventory_id;
 
     @Column(name = "bookCode")
     private String bookCode;
@@ -18,8 +23,17 @@ public class BookInventory {
     @Column(name = "noOfCopies")
     private int noOfCopies;
 
+    @CreationTimestamp
     @Column(name = "bookCreated")
     private Date bookCreated;
+
+    public int getInventory_id() {
+        return inventory_id;
+    }
+
+    public void setInventory_id(int inventory_id) {
+        this.inventory_id = inventory_id;
+    }
 
     public String getBookCode() {
         return bookCode;

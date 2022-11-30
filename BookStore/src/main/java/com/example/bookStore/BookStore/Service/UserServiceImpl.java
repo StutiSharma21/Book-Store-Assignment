@@ -2,6 +2,7 @@ package com.example.bookStore.BookStore.Service;
 
 
 import com.example.bookStore.BookStore.Exception.UserException;
+import com.example.bookStore.BookStore.Module.Books;
 import com.example.bookStore.BookStore.Module.User;
 import com.example.bookStore.BookStore.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,16 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
 
     @Override
+    public List<User> getUser(){
+        return this.userRepository.findAll();
+    }
+
+    @Override
+    public List<Books> availableBooks() {
+        return userRepository.availableBooks();
+    }
+
+    @Override
     public User createUser(User user) {
         return userRepository.save(user);
     }
@@ -33,7 +44,7 @@ public class UserServiceImpl implements UserService {
             userUpdate.setFirst_name(user.getFirst_name());
             userUpdate.setPhone_no(user.getPhone_no());
             userUpdate.setEmail_id(user.getEmail_id());
-            userUpdate.setWallet(user.getWallet());
+//            userUpdate.setWallet(user.getWallet());
             userUpdate.setIs_suspended(user.getIs_suspended());
 
             return this.userRepository.save(userUpdate);
@@ -54,24 +65,23 @@ public class UserServiceImpl implements UserService {
         }
     }
 
-    @Override
-    public User addMoney(User user, int money) {
-        Optional<User> userObj=this.userRepository.findById((long) user.getUser_id());
-        if(userObj.isPresent()) {
-            User userUpdate=userObj.get();
-            if((money!=0) && money%500==0) {
-                int tempMoney=money+user.getWallet();
-                userUpdate.setWallet(tempMoney);
-                return this.userRepository.save(userUpdate);
-            }
-            else {
-                throw new UserException("Please add money in multiples of 500");
-            }
-        }
-        else{
-            throw new UserException("User not found with ID: " + user.getUser_id());
-        }
-    }
+//    @Override
+//    public User addMoney(User user, int money) {
+//        Optional<User> userObj=this.userRepository.findById((long) user.getUser_id());
+//        if(userObj.isPresent()) {
+//            User userNewMoney=userObj.get();
+//            if((money!=0) && (money%500==0)) {
+//                userNewMoney.setWallet(money+user.getWallet());
+//                return this.userRepository.save(userNewMoney);
+//            }
+//            else {
+//                throw new UserException("Please add money in multiples of 500");
+//            }
+//        }
+//        else{
+//            throw new UserException("User not found with ID: " + user.getUser_id());
+//        }
+//    }
 
 }
 

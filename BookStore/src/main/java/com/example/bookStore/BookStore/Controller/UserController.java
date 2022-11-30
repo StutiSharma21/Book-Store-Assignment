@@ -1,5 +1,7 @@
 package com.example.bookStore.BookStore.Controller;
 
+import com.example.bookStore.BookStore.Module.BookReview;
+import com.example.bookStore.BookStore.Module.Books;
 import com.example.bookStore.BookStore.Module.User;
 import com.example.bookStore.BookStore.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,29 +18,39 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @GetMapping("/users")
+    private ResponseEntity<List<User>> getAllUsers(){
+        return ResponseEntity.ok().body(this.userService.getUser());
+
+    }
 
     @PostMapping("/user")
     private ResponseEntity<User> saveUser(@RequestBody User user){
         return ResponseEntity.ok().body(this.userService.createUser(user));
     }
 
-    @PutMapping("/user/{user_id}")
+    @PutMapping("/update_user/{user_id}")
     private ResponseEntity<User> updateUser(@PathVariable long user_id, @RequestBody User user){
         user.setUser_id((user_id));
         return ResponseEntity.ok().body(this.userService.updateUser(user));
     }
 
-    @PutMapping("/suspended_user/{user_id}")
+    @PutMapping("/suspend_user/{user_id}")
     private ResponseEntity<User> suspendUser(@PathVariable long user_id, @RequestBody User user){
         user.setUser_id((user_id));
         return ResponseEntity.ok().body(this.userService.suspendUser(user));
     }
 
-    @PutMapping("/addMoney/{user_id}/{money}")
-    private ResponseEntity<User> addMoney(@PathVariable int user_id,@RequestBody User user,@PathVariable int money){
-        user.setUser_id(user_id);
-        return ResponseEntity.ok().body(this.userService.addMoney(user,money));
+    @GetMapping("/availablebooks")
+    private ResponseEntity<List<Books>> booksAvailable(){
+        return ResponseEntity.ok().body(this.userService.availableBooks());
     }
+
+//    @PutMapping("/addMoney/{user_id}/{money}")
+//    private ResponseEntity<User> addMoney(@PathVariable int user_id,@PathVariable int money,@RequestBody User user){
+//        user.setUser_id(user_id);
+//        return ResponseEntity.ok().body(this.userService.addMoney(user,money));
+//    }
 
 
 }

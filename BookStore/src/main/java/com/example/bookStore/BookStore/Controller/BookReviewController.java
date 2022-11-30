@@ -5,9 +5,12 @@ import com.example.bookStore.BookStore.Module.User;
 import com.example.bookStore.BookStore.Service.BookReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 public class BookReviewController {
@@ -19,5 +22,11 @@ public class BookReviewController {
     private ResponseEntity<BookReview> saveReview(@RequestBody BookReview bookReview){
         return ResponseEntity.ok().body(this.bookReviewService.addReview(bookReview));
     }
+
+    @GetMapping("/sort")
+    private ResponseEntity<List<BookReview>> sortBookByLikes(){
+        return ResponseEntity.ok().body(this.bookReviewService.sortBooks());
+    }
+
 
 }
