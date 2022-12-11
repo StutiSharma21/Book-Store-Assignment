@@ -26,7 +26,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<Books> availableBooks() {
-        return userRepository.availableBooks();
+        return userRepository.availableBooks(1);
     }
 
     @Override

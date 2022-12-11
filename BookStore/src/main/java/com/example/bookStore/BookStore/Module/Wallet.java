@@ -1,5 +1,7 @@
 package com.example.bookStore.BookStore.Module;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -16,6 +18,7 @@ public class Wallet {
     @Column(name = "wallet_amount")
     private int wallet_amount;
 
+    @CreationTimestamp
     @Column(name = "transactionTime")
     private Date transactionTime;
 

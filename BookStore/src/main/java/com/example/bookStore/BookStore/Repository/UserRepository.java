@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface UserRepository extends JpaRepository<User,Long>{
 
-    @Query(value = "Select * from books where is_available = 1" , nativeQuery = true)
-    List<Books> availableBooks();
+    @Query(value = "Select * from books where is_available=?1" , nativeQuery = true)
+    List<Books> availableBooks(int isAvailable);
 }
 

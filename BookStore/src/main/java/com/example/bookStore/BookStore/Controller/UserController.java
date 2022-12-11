@@ -46,11 +46,5 @@ public class UserController {
         return ResponseEntity.ok().body(this.userService.availableBooks());
     }
 
-//    @PutMapping("/addMoney/{user_id}/{money}")
-//    private ResponseEntity<User> addMoney(@PathVariable int user_id,@PathVariable int money,@RequestBody User user){
-//        user.setUser_id(user_id);
-//        return ResponseEntity.ok().body(this.userService.addMoney(user,money));
-//    }
-
 
 }

@@ -12,4 +12,6 @@ public interface BookInventoryService {
 
     BookInventory createInv(BookInventory bookInventory);
 
+//    BookInventory updateInv(Books book);
+
 }
